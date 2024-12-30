@@ -10,7 +10,7 @@ const port = 3000;
 app.use(express_1.default.json()); // For parsing application/json
 app.use(taskRoutes_1.default); // Register routes
 app.get('/', (req, res) => {
-    res.send('Welcome to the Management App!');
+    res.send('Server up and running 😉😉');
 });
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);

@@ -48,18 +48,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const taskService = __importStar(require("../services/taskService"));
 const router = express_1.default.Router();
-// Create a task
 router.post('/tasks', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { name, description, status } = req.body;
     const taskId = yield taskService.createTask(name, description, status);
     res.status(201).json({ id: taskId });
 }));
-// Get all tasks
 router.get('/tasks', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const tasks = yield taskService.getAllTasks();
     res.status(200).json(tasks);
 }));
-// Get a task by ID
 router.get('/tasks/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const task = yield taskService.getTaskById(Number(id));
@@ -68,7 +65,6 @@ router.get('/tasks/:id', (req, res) => __awaiter(void 0, void 0, void 0, functio
     else
         res.status(404).json({ message: 'Task not found' });
 }));
-// Update a task
 router.put('/tasks/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const { name, description, status } = req.body;
@@ -78,7 +74,6 @@ router.put('/tasks/:id', (req, res) => __awaiter(void 0, void 0, void 0, functio
     else
         res.status(404).json({ message: 'Task not found' });
 }));
-// Delete a task
 router.delete('/tasks/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const deleted = yield taskService.deleteTask(Number(id));

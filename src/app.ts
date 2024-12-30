@@ -8,7 +8,7 @@ app.use(express.json()) // For parsing application/json
 app.use(taskRoutes) // Register routes
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('Welcome to the Management App!')
+  res.send('Server up and running 😉😉')
 })
 
 app.listen(port, () => {
